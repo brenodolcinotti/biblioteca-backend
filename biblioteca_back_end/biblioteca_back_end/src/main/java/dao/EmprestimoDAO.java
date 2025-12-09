@@ -2,7 +2,6 @@ package dao;
 
 import database.ConnectionFactory;
 import model.EmprestimoModel;
-
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;

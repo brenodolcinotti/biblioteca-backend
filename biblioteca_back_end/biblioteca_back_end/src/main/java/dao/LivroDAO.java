@@ -2,7 +2,6 @@ package dao;
 
 import database.ConnectionFactory;
 import model.LivroModel;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
