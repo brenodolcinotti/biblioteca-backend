@@ -18,6 +18,6 @@ public class Main {
         // Configurar tratamento de erros
         ErrorHandler.configure();
 
-        System.out.println("✅ Servidor rodando em http://localhost:4567");
+        System.out.println("Servidor rodando em http://localhost:4567");
     }
 }

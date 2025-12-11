@@ -8,7 +8,7 @@ import java.util.List;
 
 public class ClienteDAO {
 
-    // ✅ CREATE
+    // CREATE
     public void inserir(ClienteModel cliente) {
         String sql = "INSERT INTO Clientes (nome, cpf, telefone) VALUES (?, ?, ?)";
 
@@ -25,7 +25,7 @@ public class ClienteDAO {
         }
     }
 
-    // ✅ READ - LISTAR TODOS
+    // READ - LISTAR TODOS
     public List<ClienteModel> listar() {
         List<ClienteModel> lista = new ArrayList<>();
         String sql = "SELECT * FROM Clientes";
@@ -50,7 +50,7 @@ public class ClienteDAO {
         return lista;
     }
 
-    // ✅ READ - POR ID
+    // READ - POR ID
     public ClienteModel buscarPorId(int id) {
         String sql = "SELECT * FROM Clientes WHERE id = ?";
         ClienteModel cliente = null;
@@ -76,7 +76,7 @@ public class ClienteDAO {
         return cliente;
     }
 
-    // ✅ UPDATE
+    // UPDATE
     public void atualizar(ClienteModel cliente) {
         String sql = "UPDATE Clientes SET nome = ?, cpf = ?, telefone = ? WHERE id = ?";
 
@@ -94,7 +94,7 @@ public class ClienteDAO {
         }
     }
 
-    // ✅ DELETE
+    // DELETE
     public void deletar(int id) {
         String sql = "DELETE FROM Clientes WHERE id = ?";
 

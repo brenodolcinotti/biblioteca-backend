@@ -1,6 +1,7 @@
 package controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import dao.ClienteDAO;
 import model.ClienteModel;
@@ -11,7 +12,9 @@ import static spark.Spark.*;
 public class ClienteController {
 
     private static final ClienteDAO clienteDAO = new ClienteDAO();
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder()
+        .create();
+
 
     public static void rotas() {
 

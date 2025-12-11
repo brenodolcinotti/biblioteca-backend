@@ -1,9 +1,12 @@
 package controller;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import dao.EmprestimoDAO;
 import model.EmprestimoModel;
+import util.LocalDateTimeAdapter;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,7 +15,10 @@ import static spark.Spark.*;
 public class EmprestimoController {
 
     private static final EmprestimoDAO emprestimoDAO = new EmprestimoDAO();
-    private static final Gson gson = new Gson();
+    private static final Gson gson = new GsonBuilder()
+        .registerTypeAdapter(LocalDateTime.class, new LocalDateTimeAdapter())
+        .create();
+
 
     public static void rotas() {
 
