@@ -10,14 +10,14 @@ public class ClienteDAO {
 
     // CREATE
     public void inserir(ClienteModel cliente) {
-        String sql = "INSERT INTO Clientes (nome, cpf, telefone) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO cliente (nome, cpf, telefone) VALUES (?, ?, ?)";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
-            stmt.setInt(3, cliente.getTelefone());
+            stmt.setString(3, cliente.getTelefone());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
@@ -28,7 +28,7 @@ public class ClienteDAO {
     // READ - LISTAR TODOS
     public List<ClienteModel> listar() {
         List<ClienteModel> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Clientes";
+        String sql = "SELECT * FROM cliente";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -39,7 +39,7 @@ public class ClienteDAO {
                 cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCpf(rs.getString("cpf"));
-                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setTelefone(rs.getString("telefone"));
                 lista.add(cliente);
             }
 
@@ -52,7 +52,7 @@ public class ClienteDAO {
 
     // READ - POR ID
     public ClienteModel buscarPorId(int id) {
-        String sql = "SELECT * FROM Clientes WHERE id = ?";
+        String sql = "SELECT * FROM clientes WHERE id = ?";
         ClienteModel cliente = null;
 
         try (Connection conn = ConnectionFactory.getConnection();
@@ -66,7 +66,7 @@ public class ClienteDAO {
                 cliente.setId(rs.getInt("id"));
                 cliente.setNome(rs.getString("nome"));
                 cliente.setCpf(rs.getString("cpf"));
-                cliente.setTelefone(rs.getInt("telefone"));
+                cliente.setTelefone(rs.getString("telefone"));
             }
 
         } catch (SQLException e) {
@@ -78,14 +78,14 @@ public class ClienteDAO {
 
     // UPDATE
     public void atualizar(ClienteModel cliente) {
-        String sql = "UPDATE Clientes SET nome = ?, cpf = ?, telefone = ? WHERE id = ?";
+        String sql = "UPDATE cliente SET nome = ?, cpf = ?, telefone = ? WHERE id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, cliente.getNome());
             stmt.setString(2, cliente.getCpf());
-            stmt.setInt(3, cliente.getTelefone());
+            stmt.setString(3, cliente.getTelefone());
             stmt.setInt(4, cliente.getId());
             stmt.executeUpdate();
 
@@ -96,7 +96,7 @@ public class ClienteDAO {
 
     // DELETE
     public void deletar(int id) {
-        String sql = "DELETE FROM Clientes WHERE id = ?";
+        String sql = "DELETE FROM clientes WHERE id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

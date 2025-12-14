@@ -19,27 +19,55 @@
 <h1>📚 Sistema de Biblioteca</h1>
 
 <section>
-  <h2>Cadastrar Cliente</h2>
-  <input id="clienteNome" placeholder="Nome do cliente" />
-  <button onclick="criarCliente()">Salvar</button>
-  <alert>Cliente Cadastrado</alert>
+    <h2>Cadastrar Cliente</h2>
+
+    <label for="clienteNome">Nome:</label>
+    <input type="text" id="clienteNome" placeholder="Nome completo do cliente" required />
+    <br><br>
+
+    <label for="clienteCpf">CPF:</label>
+    <input type="text" id="clienteCpf" placeholder="999.999.999-99" 
+           maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" required />
+    <br><br>
+
+    <label for="clienteTelefone">Telefone:</label>
+    <input type="text" id="clienteTelefone" placeholder="(99) 99999-9999" 
+           maxlength="15" pattern="\(\d{2}\) \d{4,5}-\d{4}" required />
+    <br><br>
+
+    <button onclick="criarCliente()">Salvar Cliente</button>
+
+    <p id="sucess"></p>
 </section>
 
 <section>
-  <h2>Cadastrar Livro</h2>
-  <input id="livroNome" placeholder="Nome do livro" />
-  <button onclick="criarLivro()">Salvar</button>
+    <h2>Cadastrar Livro</h2>
+
+    <label for="livroNome">Título:</label>
+    <input type="text" id="livroNome" placeholder="Título do livro" required />
+    <br><br>
+
+    <label for="livroAutor">Autor:</label>
+    <input type="text" id="livroAutor" placeholder="Nome do autor" required />
+    <br><br>
+
+    <button onclick="criarLivro()">Salvar Livro</button>
+    <p id="sucessLivro"></p>
 </section>
 
 <section>
   <h2>Registrar Empréstimo</h2>
   <input id="empCliente" type="number" placeholder="ID Cliente" />
   <input id="empLivro" type="number" placeholder="ID Livro" />
+  <input id="data1" type="date" placeholder="Data de emprestimo" />
+  <input id="data2" type="date" placeholder="Data de devolução" />
   <button onclick="criarEmprestimo()">Emprestar</button>
+  <p id="sucessEmprestimo"></p>
 </section>
 
 <section>
   <h2>Listar Clientes</h2>
+   <button onclick="listarClientes()">Carregar</button>
   <ul id="listaClientes"></ul>
 </section>
 
@@ -56,61 +84,6 @@
 </section>
 
 <script src="js/script.js">
-const API = 'http://localhost:4567';
-
-async function criarCliente() {
-  const nome = clienteNome.value;
-  await fetch(`${API}/clientes`, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ nome })
-  });
-  clienteNome.value = '';
-  listarClientes();
-}
-
-async function criarLivro() {
-  const nome = livroNome.value;
-  await fetch(`${API}/livros`, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ nome })
-  });
-  livroNome.value = '';
-  listarLivros();
-}
-
-async function criarEmprestimo() {
-  const idCliente = empCliente.value;
-  const idLivro = empLivro.value;
-  await fetch(`${API}/emprestimos`, {
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body: JSON.stringify({ idCliente, idLivro })
-  });
-  empCliente.value = empLivro.value = '';
-  listarEmprestimos();
-}
-
-async function listarClientes() {
-  const res = await fetch(`${API}/clientes`);
-  const data = await res.json();
-  listaClientes.innerHTML = data.map(c => `<li>${c.id} - ${c.nome}</li>`).join('');
-}
-
-async function listarLivros() {
-  const res = await fetch(`${API}/livros`);
-  const data = await res.json();
-  listaLivros.innerHTML = data.map(l => `<li>${l.id} - ${l.nome}</li>`).join('');
-}
-
-async function listarEmprestimos() {
-  const res = await fetch(`${API}/emprestimos`);
-  const data = await res.json();
-  listaEmprestimos.innerHTML = data.map(e => `
-    <li>ID ${e.id} | Cliente ${e.idCliente} | Livro ${e.idLivro} | Emp: ${e.localDateEmprestimo} | Dev: ${e.localDateDevolucao ?? '—'}</li>
-  `).join('');
-}
 </script>
 
 </body>

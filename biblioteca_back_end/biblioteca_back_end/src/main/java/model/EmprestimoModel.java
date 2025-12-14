@@ -5,21 +5,21 @@ import java.time.LocalDateTime;
 public class EmprestimoModel {
 
     private int id;
-    private int idCliente;
-    private int idLivro;
-    private LocalDateTime localDateEmprestimo;
-    private LocalDateTime localDateDevolucao;
+    private int id_cliente;
+    private int id_livro;
+    private String localDateEmprestimo;
+    private String localDateDevolucao;
 
     // Construtor vazio
     public EmprestimoModel() {}
 
     // Construtor com parâmetros
-    public EmprestimoModel(int id, int idCliente, int idLivro,
-                      LocalDateTime localDateEmprestimo,
-                      LocalDateTime localDateDevolucao) {
+    public EmprestimoModel(int id, int id_cliente, int id_livro,
+                      String localDateEmprestimo,
+                      String localDateDevolucao) {
         this.id = id;
-        this.idCliente = idCliente;
-        this.idLivro = idLivro;
+        this.id_cliente = id_cliente;
+        this.id_livro = id_livro;
         this.localDateEmprestimo = localDateEmprestimo;
         this.localDateDevolucao = localDateDevolucao;
     }
@@ -33,35 +33,35 @@ public class EmprestimoModel {
         this.id = id;
     }
 
-    public int getIdCliente() {
-        return idCliente;
+    public int getid_cliente() {
+        return id_cliente;
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente = idCliente;
+    public void setid_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
-    public int getIdLivro() {
-        return idLivro;
+    public int getid_livro() {
+        return id_livro;
     }
 
-    public void setIdLivro(int idLivro) {
-        this.idLivro = idLivro;
+    public void setid_livro(int id_livro) {
+        this.id_livro = id_livro;
     }
 
-    public LocalDateTime getLocalDateEmprestimo() {
+    public String getLocalDateEmprestimo() {
         return localDateEmprestimo;
     }
 
-    public void setLocalDateEmprestimo(LocalDateTime localDateEmprestimo) {
+    public void setLocalDateEmprestimo(String localDateEmprestimo) {
         this.localDateEmprestimo = localDateEmprestimo;
     }
 
-    public LocalDateTime getLocalDateDevolucao() {
+    public String getLocalDateDevolucao() {
         return localDateDevolucao;
     }
 
-    public void setLocalDateDevolucao(LocalDateTime localDateDevolucao) {
+    public void setLocalDateDevolucao(String localDateDevolucao) {
         this.localDateDevolucao = localDateDevolucao;
     }
 }

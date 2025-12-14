@@ -26,8 +26,8 @@ public class EmprestimoController {
         post("/emprestimos", (req, res) -> {
             EmprestimoModel e = gson.fromJson(req.body(), EmprestimoModel.class);
 
-            e.setLocalDateEmprestimo(LocalDateTime.now());
-            e.setLocalDateDevolucao(LocalDateTime.now().plusDays(7));
+            System.out.println("ID Cliente recebido: " + e.getid_cliente());
+    System.out.println("ID Livro recebido: " + e.getid_livro());
 
             emprestimoDAO.inserir(e);
             res.status(201);
@@ -64,7 +64,6 @@ public class EmprestimoController {
                 return "Empréstimo não encontrado!";
             }
 
-            e.setLocalDateDevolucao(LocalDateTime.now());
             emprestimoDAO.atualizar(e);
 
             return "Devolução registrada com sucesso!";

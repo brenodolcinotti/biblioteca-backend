@@ -10,7 +10,7 @@ public class LivroDAO {
 
     // CREATE
     public void inserir(LivroModel livro) {
-        String sql = "INSERT INTO Livros (nome, autor) VALUES (?, ?)";
+        String sql = "INSERT INTO livro (nome, autor) VALUES (?, ?)";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -27,7 +27,7 @@ public class LivroDAO {
     // READ - LISTAR TODOS
     public List<LivroModel> listar() {
         List<LivroModel> lista = new ArrayList<>();
-        String sql = "SELECT * FROM Livros";
+        String sql = "SELECT * FROM livro";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql);
@@ -50,7 +50,7 @@ public class LivroDAO {
 
     // READ - POR ID
     public LivroModel buscarPorId(int id) {
-        String sql = "SELECT * FROM Livros WHERE id = ?";
+        String sql = "SELECT * FROM livro WHERE id = ?";
         LivroModel livro = null;
 
         try (Connection conn = ConnectionFactory.getConnection();
@@ -75,7 +75,7 @@ public class LivroDAO {
 
     // UPDATE
     public void atualizar(LivroModel livro) {
-        String sql = "UPDATE Livros SET nome = ?, autor = ? WHERE id = ?";
+        String sql = "UPDATE livro SET nome = ?, autor = ? WHERE id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -92,7 +92,7 @@ public class LivroDAO {
 
     // DELETE
     public void deletar(int id) {
-        String sql = "DELETE FROM Livros WHERE id = ?";
+        String sql = "DELETE FROM livro WHERE id = ?";
 
         try (Connection conn = ConnectionFactory.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {

@@ -5,13 +5,13 @@ public class ClienteModel {
     private int id;
     private String nome;
     private String cpf;
-    private int telefone;
+    private String telefone;
 
     // Construtor vazio
     public ClienteModel() {}
 
     // Construtor com parâmetros
-    public ClienteModel(int id, String nome, String cpf, int telefone) {
+    public ClienteModel(int id, String nome, String cpf, String telefone) {
         this.id = id;
         this.nome = nome;
         this.cpf = cpf;
@@ -43,11 +43,11 @@ public class ClienteModel {
         this.cpf = cpf;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 }
