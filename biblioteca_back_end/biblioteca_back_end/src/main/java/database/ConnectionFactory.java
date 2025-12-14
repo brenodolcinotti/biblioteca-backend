@@ -6,12 +6,12 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
     
-    public static Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(
-            "jdbc:mysql://localhost:4567/biblioteca",
-            "root",
-            "senha"
-        );
-    }
+    private static final String URL =
+        "jdbc:mysql://localhost:4567/biblioteca?useSSL=false&serverTimezone=UTC";
+    private static final String USER = "root";
+    private static final String PASSWORD = "aluno";
 
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
 }
