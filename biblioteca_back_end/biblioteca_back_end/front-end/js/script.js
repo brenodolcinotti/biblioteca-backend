@@ -110,7 +110,7 @@ async function listarEmprestimos() {
   const res = await fetch(`${API}/emprestimos`);
   const data = await res.json();
   listaEmprestimos.innerHTML = data.map(e => `
-    <li>ID ${e.id} | Cliente ${e.id_cliente} | Livro ${e.id_livro} |</li>
+    <li>ID ${e.id} | Cliente ${e.id_cliente} | Livro ${e.id_livro} | Data empréstimo ${e.localDateEmprestimo}</li>
   `).join('');
 }   
 
