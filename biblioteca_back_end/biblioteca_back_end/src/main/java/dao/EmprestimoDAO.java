@@ -14,7 +14,7 @@ public class EmprestimoDAO {
         String sql = """
             INSERT INTO emprestimo 
             (id_cliente, id_livro)
-            VALUES (?, ?, ?)
+            VALUES (?, ?)
         """;
 
         try (Connection conn = ConnectionFactory.getConnection();

@@ -67,13 +67,13 @@ async function criarEmprestimo() {
     const idLivro = parseInt(document.getElementById('empLivro').value);
 //   const idCliente = document.getElementById("empCliente").value;
 //   const idLivro = document.getElementById("empLivro").value;
-  const data1 = document.getElementById("data1").value;
-  const data2 = document.getElementById("data2").value;
+  // const data1 = document.getElementById("data1").value;
+  // const data2 = document.getElementById("data2").value;
 
   novoEmprestimo = {
     id_cliente: parseInt(idCliente),
-    id_livro: parseInt(idLivro),
-    data_devolucao: data2
+    id_livro: parseInt(idLivro)
+    // data_devolucao: data2
   }
   console.log(novoEmprestimo)
 
