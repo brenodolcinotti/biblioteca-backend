@@ -1,5 +1,6 @@
 import controller.ClienteController;
 import controller.LivroController;
+import database.ConnectionFactory;
 import controller.EmprestimoController;
 import util.ErrorHandler;
 
@@ -8,7 +9,10 @@ import static spark.Spark.*;
 public class Main {
     public static void main(String[] args) {
 
-        port(4567); // Porta padrão do Spark
+        // Testa a conexão com o banco de dados
+        ConnectionFactory.testarConexao();
+    
+        port(4567);
 
         // ===== CORS =====
         before((request, response) -> {

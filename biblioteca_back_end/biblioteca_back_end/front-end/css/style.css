@@ -1,41 +1,118 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background: #f5f5f5;
+/* RESET */
+* {
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
+/* BODY */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+    min-height: 100vh;
+    padding: 20px;
+    color: #1f2937;
+}
+
+/* TITULO */
 h1 {
     text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.4rem;
+    color: #1e3a8a;
 }
 
+/* CONTAINER PRINCIPAL */
 .container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 25px;
 }
 
+/* CARD */
 section {
-    background: white;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0,0,0,0.12);
+}
+
+/* TITULOS DOS CARDS */
+section h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #1d4ed8;
+}
+
+section h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    color: #374151;
+}
+
+/* INPUTS */
 input {
     width: 100%;
-    padding: 8px;
-    margin: 5px 0;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 0.95rem;
 }
 
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+}
+
+/* BOTÕES */
 button {
     width: 100%;
-    padding: 8px;
+    padding: 10px;
     margin-top: 5px;
+    border-radius: 8px;
+    border: none;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
 }
 
+button:hover {
+    background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+    transform: scale(1.02);
+}
+
+/* LISTAS */
 ul {
+    list-style: none;
     margin-top: 10px;
-    padding-left: 20px;
+}
+
+li {
+    padding: 8px 10px;
+    margin-bottom: 6px;
+    background: #f1f5f9;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* RODAPÉ */
+footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.85rem;
 }

@@ -8,8 +8,17 @@ public class ConnectionFactory {
     
     private static final String URL = "jdbc:mysql://localhost:3306/biblioteca";
     private static final String USER = "root";
-    private static final String PASS = "987123";
+    private static final String PASS = "aluno";
     private static final String DRIVER = "com.mysql.cj.jdbc.Driver";
+
+    public static void testarConexao() {
+    try (Connection conn = getConnection()) {
+        System.out.println("Conexão com o banco de dados estabelecida com sucesso!");
+    } catch (SQLException e) {
+        System.err.println("Erro ao conectar ao banco de dados:");
+        e.printStackTrace();
+    }
+}
 
      public static Connection getConnection() {
 
