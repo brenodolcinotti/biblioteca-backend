@@ -13,7 +13,7 @@ public class EmprestimoDAO {
     public void inserir(EmprestimoModel e) {
         String sql = """
             INSERT INTO emprestimo 
-            (id_cliente, id_livro, data_devolucao)
+            (id_cliente, id_livro)
             VALUES (?, ?, ?)
         """;
 
@@ -22,8 +22,6 @@ public class EmprestimoDAO {
 
             stmt.setInt(1, e.getid_cliente());
             stmt.setInt(2, e.getid_livro());
-            stmt.setString(3, e.getLocalDateDevolucao());
-
             stmt.executeUpdate();
 
         } catch (SQLException ex) {

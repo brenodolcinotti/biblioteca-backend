@@ -14,26 +14,29 @@ public class Main {
     
         port(4567);
 
-        // ===== CORS =====
-        before((request, response) -> {
-            response.header("Access-Control-Allow-Origin", "*");
-            response.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-            response.header("Access-Control-Allow-Headers", "Content-Type,Authorization");
-        });
+     // Em Main.java, substitua o bloco options("/*", ...)
 
-        options("/*", (request, response) -> {
-            String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
-            if (accessControlRequestHeaders != null) {
-                response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
-            }
-
-            String accessControlRequestMethod = request.headers("Access-Control-Request-Method");
-            if (accessControlRequestMethod != null) {
-                response.header("Access-Control-Allow-Methods", accessControlRequestMethod);
-            }
-            return "OK";
-        });
-
+options("/*", (request, response) -> {
+    
+    // 1. Permite a ORIGEM
+    response.header("Access-Control-Allow-Origin", "*");
+    
+    // 2. Permite os MÉTODOS que o POST, PUT, etc. precisam
+    response.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+    
+    // 3. O PONTO CRÍTICO: Permite os headers que o front-end está enviando.
+    // É essencial garantir que o Content-Type esteja na lista.
+    String accessControlRequestHeaders = request.headers("Access-Control-Request-Headers");
+    if (accessControlRequestHeaders != null) {
+        response.header("Access-Control-Allow-Headers", accessControlRequestHeaders);
+    }
+    
+    // Adiciona explicitamente o Content-Type se ele não tiver vindo no request
+    // (Ainda que o bloco 'if' acima deva capturar isso, este é um reforço robusto)
+    response.header("Access-Control-Allow-Headers", "Content-Type, Authorization, Accept, X-Requested-With, " + (accessControlRequestHeaders != null ? accessControlRequestHeaders : ""));
+    
+    return "OK";
+});
         // Inicializar rotas dos controllers
         LivroController.rotas();
         ClienteController.rotas();

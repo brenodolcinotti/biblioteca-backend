@@ -469,14 +469,19 @@
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          idCliente: Number(empClienteId.value),
-          idLivro: Number(empLivroId.value)
+          id_cliente: Number(empClienteId.value),
+          id_livro: Number(empLivroId.value)
         })
       }).then(() => {
         listarEmprestimos();
         setButtonLoading(btn, false);
         empClienteId.value = ''; empLivroId.value = '';
       }).catch(() => setButtonLoading(btn, false));
+
+      console.log({
+        idCliente: Number(empClienteId.value),
+          idLivro: Number(empLivroId.value)
+      })
     }
 
     function listarEmprestimos() {
@@ -494,8 +499,8 @@
                 listaEmprestimos.innerHTML += `
                 <li>
                 <strong>#${e.id}</strong>
-                <span><i class="fa-solid fa-user" style="font-size:0.7em; margin-right:4px"></i> ${e.idCliente}</span>
-                <span style="margin-left:10px"><i class="fa-solid fa-book" style="font-size:0.7em; margin-right:4px"></i> ${e.idLivro}</span>
+                <span><i class="fa-solid fa-user" style="font-size:0.7em; margin-right:4px"></i> ${e.id_cliente}</span>
+                <span style="margin-left:10px"><i class="fa-solid fa-book" style="font-size:0.7em; margin-right:4px"></i> ${e.id_livro}</span>
                 </li>`;
             });
           }
